@@ -4,7 +4,7 @@
 export PATH=/usr/bin:/usr/local/bin:/cygdrive/bin:/cygdrive/usr/bin:$PATH
 
 mkdir -pv /cygdrive/c/Code/libetpan
-cp -fv libetpan-mailsmtp-cygwin.patch /cygdrive/c/Code/libetpan
+cp -fv $TRAVIS_BUILD_DIR/libetpan-mailsmtp-cygwin.patch /cygdrive/c/Code/libetpan
 cd /cygdrive/c/Code/libetpan
 
 function check_command {
