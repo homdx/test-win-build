@@ -117,71 +117,80 @@ LANG=C ./autogen.sh
 # --with-sasl=/cygdrive/c/Code/libetan/third-party/include  --with-openssl=/cygdrive/c/Code/libetan/third-party/include --with-zlib=/cygdrive/c/Code/libetan/third-party/include
 
 #echo compile
-LANG=C ./configure --with-gnu-ld=yes --disable-iconv --disable-silent-rules --enable-shared=false --disable-threads
+LANG=C ./configure --enable-shared=false
 
 LANG=C make || echo search la files && find .  "*.la" -print
-sleep 15
+echo result status first make is $?
+sleep 7
 cat src/low-level/mime/.libs/libmime.la
 echo la convert to dos
-sleep 15
+sleep 7
 find . -name \*.la|xargs dos2unix
 echo done dos2unix
-sleep 15
+sleep 7
 dos2unix src/low-level/maildir/.libs/libmaildir.la
-
-
 dos2unix src/low-level/mh/.libs/libmh.la
 
 echo second make
 LANG=C make
+echo result status second make is $?
 find . -name \*.la|xargs dos2unix
-sleep 15
+sleep 7
 
 echo third make
 find . -name \*.la|xargs dos2unix
 LANG=C make
+echo result status third make is $?
+sleep 7
 
 echo fouth make
 LANG=C find . -name \*.la|xargs dos2unix
-make
+LANG=C make
+echo result status fouth make is $?
+sleep 7
 
 echo five make
 LANG=C find . -name \*.la|xargs dos2unix
-make
-
+LANG=C make
+echo result status five make is $?
+sleep 7
 
 echo language is $LANG
 echo now first install
 make install
+echo result status make install first is $?
 
-sleep 15
+sleep 7
 find . -name \*.la|xargs dos2unix
 echo done dos2unix
-sleep 15
+sleep 7
 
 echo now second install
 make install
+echo result status make install second is $?
 
-sleep 15
+sleep 7
 find . -name \*.la|xargs dos2unix
 echo done dos2unix
-sleep 15
+sleep 7
 
 echo now third install
 make install
+echo result status make install third is $?
 
-sleep 15
+sleep 7
 find . -name \*.la|xargs dos2unix
 echo done dos2unix
-sleep 15
+sleep 7
 
 echo now fouth install
 make install
+echo result status make install fouth is $?
 
-sleep 15
+sleep 7
 find . -name \*.la|xargs dos2unix
 echo done dos2unix
-sleep 15
+sleep 7
 
 echo now five install
 make install
