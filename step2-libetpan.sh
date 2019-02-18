@@ -4,7 +4,15 @@
 export PATH=/usr/bin:/usr/local/bin:/cygdrive/bin:/cygdrive/usr/bin:$PATH
 
 mkdir -pv /cygdrive/c/Code/libetpan
+
+if [ $TRAVIS ]
+then
+echo "Travis run"
 cp -fv $TRAVIS_BUILD_DIR/libetpan-mailsmtp-cygwin.patch /cygdrive/c/Code/libetpan
+else
+cp -fv libetpan-mailsmtp-cygwin.patch /cygdrive/c/Code/libetpan
+fi
+
 cd /cygdrive/c/Code/libetpan
 
 function check_command {
@@ -50,7 +58,7 @@ mkdir libetpan/third-party1
 dos2unix src/low-level/smtp/mailsmtp.c
 ls -la
 cp -vf libetpan-mailsmtp-cygwin.patch libetpan/
-cd libetpan && echo git checkout fcbe81e025c01fab1fb807a4aebf7291b3e65253 && cd ..
+cd libetpan && git checkout ab999253ead97e3d5a4a077a9ac756c1b2fabd71 && cd ..
 cd libetpan/third-party1
 ls -la
 
