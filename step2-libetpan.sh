@@ -37,6 +37,9 @@ check_command
 checkname=make
 check_command
 checkname=libtool
+check_command
+checkname=patch
+check_command
 
 echo cygwin make
 make --version
@@ -45,7 +48,7 @@ set +ex
 #wget https://github.com/dinhviethoa/libetpan/archive/1.9.3.tar.gz
 git config --list
 echo change crlf git config
-git config --global add core.autocrlf input
+git config --global core.autocrlf input
 git config --list
 #git submodule update --init --recursive
 
