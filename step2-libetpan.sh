@@ -1,7 +1,10 @@
 #!/bin/bash
 
-
-export PATH=/usr/bin:/usr/local/bin:/cygdrive/bin:/cygdrive/usr/bin:$PATH
+echo old version
+sh --version
+export PATH=/usr/bin:/usr/local/bin:/cygdrive/bin:/cygdrive/usr/bin
+echo new version
+sh --version
 
 mkdir -pv /cygdrive/c/Code/libetpan
 
