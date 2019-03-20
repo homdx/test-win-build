@@ -12,4 +12,5 @@ git clone --recursive https://github.com/riboseinc/rnp.git
 cd rnp
 git checkout 586caec6cd728d54dbd281cafe17ee2e1f29dbf1
 echo run step5-rnp.sh
+cd ..
 sh step5-rnp.sh
