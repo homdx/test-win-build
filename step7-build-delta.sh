@@ -9,6 +9,14 @@ else
 echo "No travis runing"
 fi
 
+echo "Setup Meson from sources"
+git clone --recursive https://github.com/mesonbuild/meson.git
+cd meson
+python3 setup.py build
+python3 setup.py install
+meson --version || echo error meson info
+cd ..
+
 cd deltachat-node
 echo rollback to 0.39
 git checkout f510d6ee015407362ee78d2ff05c6d81ac123b0b || echo error commit
