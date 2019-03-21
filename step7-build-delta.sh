@@ -18,7 +18,8 @@ meson --version || echo error meson info
 cd ..
 
 cd deltachat-node
-echo rollback to 0.39
-git checkout f510d6ee015407362ee78d2ff05c6d81ac123b0b || echo error commit
-git submodule update --recursive || echo error submodule update
-npm install || echo need rollback to 0.39 version and fix build for travis
+patch for 0.39 travis build
+cp  -v../package.json.039.patch .
+echo patching 0.39 version for travis build
+patch -p0 <package.json.039.patch
+npm install || echo Error build. Show log build && cat /cygdrive/c/Users/travis/AppData/Roaming/npm-cache/_logs\*.log && /bin/false
