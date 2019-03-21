@@ -19,7 +19,7 @@ cd ..
 
 cd deltachat-node
 patch for 0.39 travis build
-cp  -v../package.json.039.patch .
+cp  -v ../package.json.039.patch .
 echo patching 0.39 version for travis build
 patch -p0 <package.json.039.patch
 npm install || echo Error build. Show log build && cat /cygdrive/c/Users/travis/AppData/Roaming/npm-cache/_logs\*.log && /bin/false
