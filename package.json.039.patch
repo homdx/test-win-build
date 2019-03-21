@@ -1,0 +1,11 @@
+--- package.json        2019-01-17 23:26:05.000000000 +0300
++++ package.json.travis 2019-03-21 22:32:20.231536134 +0300
+@@ -6,7 +6,7 @@
+     "coverage": "nyc report --reporter=text-lcov | coveralls",
+     "coverage-html-report": "rm -rf coverage/ && nyc report --reporter=html && opn coverage/index.html",
+     "generate-constants": "./scripts/generate-constants.js",
+-    "install": "node-gyp-build scripts/rebuild-core.js",
++    "install": "bash -c node-gyp-build scripts/rebuild-core.js",
+     "prebuild": "node scripts/prebuildify.js",
+     "submodule": "git submodule update --recursive --init",
+     "test": "standard && nyc node test/index.js",
