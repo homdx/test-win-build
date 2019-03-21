@@ -19,3 +19,5 @@ script:
     - ./travis-step4-2-botan.cmd
     - wget https://github.com/riboseinc/rnp/archive/v0.12.0.tar.gz
     - ./travis-step5-rnp.cmd
+    - choco install nodejs.install && ls -la '/c/Program Files/nodejs/' && /c/Program\ Files/nodejs/npm --version
+    - ls -la && git clone https://github.com/deltachat/deltachat-node.git --recursive && export PATH=/c/Program\ Files/nodejs/:$PATH && npm --version && cd deltachat-node && npm install || echo need build after installed requirements && cd ..
