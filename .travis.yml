@@ -22,6 +22,6 @@ script:
     - choco install nodejs.install && ls -la '/c/Program Files/nodejs/' && /c/Program\ Files/nodejs/npm --version
     - echo python3 and pip setup && /c/ProgramData/chocolatey/bin/cyg-get.bat python3 python3-pip python3-devel gcc-g++ gcc-fortran libgcrypt20 libgpg-error0 libxslt python3-asn1crypto python3-cffi python3-chardet python3-cryptography python3-idna	python3-lockfile python3-lxml python3-openssl python3-ply python3-pycparser	python3-requests python3-urllib3  python3-wheel
     - ./travis-step6-ninja-meson.cmd
-    - ls -la && wget --quiet https://github.com/deltachat/deltachat-node/archive/v0.39.0.tar.gz && tar -xf v0.39.0.tar.gz && mv deltachat-node-0.39.0 deltachat-node && cd deltachat-node && wget --quiet https://github.com/deltachat/deltachat-core/archive/v0.39.1.tar.gz && tar -xf v0.39.1.tar.gz && rmdir deltachat-core && mv deltachat-core-0.39.1 deltachat-core && cd .. 
+    - ls -la && wget --quiet https://github.com/deltachat/deltachat-node/archive/v0.39.0.tar.gz && tar -xf v0.39.0.tar.gz && mv deltachat-node-0.39.0 deltachat-node && cd deltachat-node && wget --quiet https://github.com/deltachat/deltachat-core/archive/v0.39.1.tar.gz && tar -xf v0.39.1.tar.gz && rm -rf deltachat-core && mv deltachat-core-0.39.1 deltachat-core && cd .. 
     - export PATH=/c/Program\ Files/nodejs/:$PATH && npm --version && cd deltachat-node && npm install || echo need build after installed requirements && cd ..
     - ./travis-step7-build-delta.cmd
