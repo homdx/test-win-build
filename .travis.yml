@@ -2,7 +2,7 @@ os: windows
 language: shell
 
 script:
-    - choco install rust npm
+    - choco install rust nodejs.install
     - export PATH=/c/Program\ Files/nodejs/:$PATH && git clone https://github.com/deltachat/deltachat-node --recursive && cd deltachat-node && npm install
 #    - choco install cygwin --params "/NoStartMenu"
 #    - choco install cyg-get
