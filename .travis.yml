@@ -5,12 +5,11 @@ script:
     - ls /c/Users
     #- wget https://static.rust-lang.org/rustup/dist/i686-pc-windows-gnu/rustup-init.exe && ./rustup-init.exe -s --default-toolchain nightly
     - choco install nodejs.install
-    - echo 1 && ls -la /c/ProgramData/chocolatey/lib/rust/tools
-    - echo 2 && ls -la /c/ProgramData/chocolatey/lib/rust/tools/bin
-    - echo 3 && ls -la /c/ProgramData/chocolatey/bin
     - export PATH=/c/Users/travis/.cargo/bin:$PATH && cd /c/ProgramData/chocolatey/bin && wget https://static.rust-lang.org/rustup/dist/i686-pc-windows-gnu/rustup-init.exe && ./rustup-init.exe -y --default-toolchain nightly
     - export PATH=/c/Users/travis/.cargo/bin:$PATH && rustc --version
-    - export PATH=/c/Users/travis/.cargo/bin:/c/Program\ Files/nodejs:$PATH && git clone https://github.com/deltachat/deltachat-node --recursive && cd deltachat-node && npm install
+    - export PATH=/c/Users/travis/.cargo/bin:/c/Program\ Files/nodejs:$PATH && git clone https://github.com/deltachat/deltachat-node --recursive && cd deltachat-node && npm install && npm link
+    - ls -la && git clone --recursive https://github.com/deltachat/deltachat-desktop && cd deltachat-desktop && export PATH=/c/Users/travis/.cargo/bin:/c/Program\ Files/nodejs:$PATH && npm link deltachat-node && npm install && echo build deltachat dekstop windows && npm run build && echo test deltachat windows && npm run test
+    
 #    - choco install cygwin --params "/NoStartMenu"
 #    - choco install cyg-get
 #    - /c/ProgramData/chocolatey/bin/cyg-get.bat dos2unix patch unzip automake make bzip2 libsqlite-3-devel libtool gcc-g++ openssl-devel wget gcc-core cygwin-devel
