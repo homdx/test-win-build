@@ -4,7 +4,7 @@ language: shell
 script:
     - choco install rust nodejs.install
     - echo rust change to nighly && ls /c/ProgramData/chocolatey/lib/rust/tools && ls /c/ProgramData/chocolatey/lib/rust/tools/bin
-    rustup default nightly
+ #   rustup default nightly
     - export PATH=/c/Program\ Files/nodejs/:$PATH && git clone https://github.com/deltachat/deltachat-node --recursive && cd deltachat-node && npm install
 #    - choco install cygwin --params "/NoStartMenu"
 #    - choco install cyg-get
