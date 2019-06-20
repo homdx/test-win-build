@@ -2,10 +2,11 @@ os: windows
 language: shell
 
 script:
-    - wget https://static.rust-lang.org/rustup/dist/i686-pc-windows-gnu/rustup-init.exe && ./rustup-init.exe --default-toolchain nightly
-   # - choco install rust nodejs.install
-   # - echo 1 && ls -la /c/ProgramData/chocolatey/lib/rust/tools
-   # - echo 2 && ls -la /c/ProgramData/chocolatey/lib/rust/tools/bin
+   # - wget https://static.rust-lang.org/rustup/dist/i686-pc-windows-gnu/rustup-init.exe && ./rustup-init.exe --default-toolchain nightly
+    - choco install rust nodejs.install
+    - echo 1 && ls -la /c/ProgramData/chocolatey/lib/rust/tools
+    - echo 2 && ls -la /c/ProgramData/chocolatey/lib/rust/tools/bin
+    - echo 3 && ls -la /c/ProgramData/chocolatey/bin
     - rustc --version
    # - echo rust change to nighly && export PATH=/c/ProgramData/chocolatey/lib/rust/tools:/c/ProgramData/chocolatey/lib/rust/tools/bin:$PATH && rustup default nightly
    # - export PATH=/c/Program\ Files/nodejs/:$PATH && git clone https://github.com/deltachat/deltachat-node --recursive && cd deltachat-node && npm install
