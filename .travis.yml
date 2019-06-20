@@ -2,14 +2,14 @@ os: windows
 language: shell
 
 script:
-    - ls /c/Users
+  - ls /c/Users
     #- wget https://static.rust-lang.org/rustup/dist/i686-pc-windows-gnu/rustup-init.exe && ./rustup-init.exe -s --default-toolchain nightly
-    - choco install nodejs.install
-    - export PATH=/c/Users/travis/.cargo/bin:$PATH && cd /c/ProgramData/chocolatey/bin && wget https://static.rust-lang.org/rustup/dist/i686-pc-windows-gnu/rustup-init.exe && ./rustup-init.exe -y --default-toolchain nightly
-    - export PATH=/c/Users/travis/.cargo/bin:$PATH && rustc --version
-    - export PATH=/c/Users/travis/.cargo/bin:/c/Program\ Files/nodejs:$PATH && git clone https://github.com/deltachat/deltachat-node --recursive && cd deltachat-node && npm install && npm link
-    - ls -la && git clone --recursive https://github.com/deltachat/deltachat-desktop && cd deltachat-desktop && export PATH=/c/Users/travis/.cargo/bin:/c/Program\ Files/nodejs:$PATH && npm link deltachat-node && npm install && echo build deltachat dekstop windows && npm run build && echo test deltachat windows && npm run test
-    
+  - choco install nodejs.install
+  - export PATH=/c/Users/travis/.cargo/bin:$PATH && cd /c/ProgramData/chocolatey/bin && wget https://static.rust-lang.org/rustup/dist/i686-pc-windows-gnu/rustup-init.exe && ./rustup-init.exe -y --default-toolchain nightly
+  - export PATH=/c/Users/travis/.cargo/bin:$PATH && rustc --version
+  - export PATH=/c/Users/travis/.cargo/bin:/c/Program\ Files/nodejs:$PATH && git clone https://github.com/deltachat/deltachat-node --recursive && cd deltachat-node && npm install && npm link
+  - ls -la && git clone --recursive https://github.com/deltachat/deltachat-desktop && cd deltachat-desktop && export PATH=/c/Users/travis/.cargo/bin:/c/Program\ Files/nodejs:$PATH && npm link deltachat-node && npm install && echo build deltachat dekstop windows && npm run build && echo test deltachat windows && npm run test
+  - ls -la && cd deltachat-desktop && cd dist && mv win-unpacked ../release/ && cd .. && zip -r deltachat-win.zip release && mv deltachat-win.zip release/ && ls -la release
 #    - choco install cygwin --params "/NoStartMenu"
 #    - choco install cyg-get
 #    - /c/ProgramData/chocolatey/bin/cyg-get.bat dos2unix patch unzip automake make bzip2 libsqlite-3-devel libtool gcc-g++ openssl-devel wget gcc-core cygwin-devel
@@ -33,3 +33,12 @@ script:
 #    - ls -la && wget --quiet https://github.com/deltachat/deltachat-node/archive/v0.39.0.tar.gz && tar -xf v0.39.0.tar.gz && mv deltachat-node-0.39.0 deltachat-node && cd deltachat-node && wget --quiet https://github.com/deltachat/deltachat-core/archive/v0.39.1.tar.gz && tar -xf v0.39.1.tar.gz && rm -rf deltachat-core && mv deltachat-core-0.39.1 deltachat-core && cd .. 
 #    - export PATH=/c/Program\ Files/nodejs/:$PATH && npm --version && cd deltachat-node && npm install || echo need build after installed requirements && cd ..
 #    - ./travis-step7-build-delta.cmd
+
+deploy:
+  provider: releases
+  api_key:
+    secure: MHOFxtukgy4DdA0aglqX/ngEpbzwsPLvtNPpv9yfhugp0Y7Kd9xNzm4Yg7iVEoCUpvb6+sSZNKdlzWTZPVomFC0h1ZR+ufLBcI3ZjumSx/jM4d46e0mr5K/n/+IwhgBAMjharl6aT7fMJu371Il9M7uIOiYXj1C+DKurmdemULiMFTtbPMSC/p46SX3wJVglIes2oLPts0gl57hgaxXhHBd+pqVzOtKxelkAH8r88wejvFvaPMJNL5dvIyCaDuWndrbe8ZRQLlj0B6xOrOeAfAJdCZ0CDB8XAaCMVVC+X4aR639vTHW9K5Nn2jV/xVDXQr6H2vHpeHMgtgucfgE4xm4FmJuWht38Q6D9Px6yG96KLEKHh4qGRTKk8xBHs97cbSj9bHXIqnV4IZuWSM/IAEMkGpWIr3PUAFDNSpS8y1l9Yqa8Xt6PGY/9MuN2WNRhZUXVP/VNtN5beGItLtxXzhCeDInvGGrzF6ewwLFZ5nfwWMAY7hmYYpyV8TdwR6Wjp5eu8fRHnDviHRYsxG87wM8vEcPo0h34SzXxIywKETgRo28vyJgHggcOta2mmowRw6QasmslQujf91+lWWVTnt0LoVVTed4XAWEFeIcBdyaqxhDLkPdJaO65U2gtZR5DcAW7VImbE4+bU2D60N7NpKVAzuJ8fGkVaIDGsvHR6fQ=
+  file: release/deltachat-win.zip
+  prerelease: true
+  on:
+    repo: homdx/test-win-build
