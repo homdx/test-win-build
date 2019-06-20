@@ -2,6 +2,7 @@ os: windows
 language: shell
 
 script:
+    - ls /c/Users
     #- wget https://static.rust-lang.org/rustup/dist/i686-pc-windows-gnu/rustup-init.exe && ./rustup-init.exe -s --default-toolchain nightly
     - choco install rust nodejs.install
     - echo 1 && ls -la /c/ProgramData/chocolatey/lib/rust/tools
