@@ -3,16 +3,16 @@ language: shell
 
 script:
   - choco install nodejs.install
-#  - export PATH=/c/Users/travis/.cargo/bin:$PATH && cd /c/ProgramData/chocolatey/bin && wget --quiet https://static.rust-lang.org/rustup/dist/i686-pc-windows-gnu/rustup-init.exe && ./rustup-init.exe -y --default-toolchain nightly
-  - mkdir -pv .cargo && export PATH=/c/Users/travis/.cargo/bin:$PATH && cd /c/Users/travis/ && cd .cargo && wget --quiet https://github.com/homdx/test-win-build/releases/download/cached-0.104a.0/cargo.7z && 7z x -y cargo.7z && rm cargo.7z && ls -la && cd .. && mkdir -pv .rustup && cd .rustup && wget --quiet https://github.com/homdx/test-win-build/releases/download/cached-0.104a.0/rustup-arc.7z && 7z -x -y rustup-arc.7z && rm rustup-arc.7z && cd .. && rustc --version
+  - export PATH=/c/Users/travis/.cargo/bin:$PATH && cd /c/ProgramData/chocolatey/bin && wget --quiet https://static.rust-lang.org/rustup/dist/i686-pc-windows-gnu/rustup-init.exe && ./rustup-init.exe -y --default-toolchain nightly
+  - mkdir -pv .cargo && export PATH=/c/Users/travis/.cargo/bin:$PATH && cd /c/Users/travis/ && cd .cargo && echo wget --quiet https://github.com/homdx/test-win-build/releases/download/cached-0.104a.0/cargo.7z && echo 7z x -y cargo.7z && rm -fv cargo.7z && ls -la && cd .. && mkdir -pv .rustup && cd .rustup && echo wget --quiet https://github.com/homdx/test-win-build/releases/download/cached-0.104a.0/rustup-arc.7z && echo 7z -x -y rustup-arc.7z && rm -fv rustup-arc.7z && cd .. && rustc --version
   - export PATH=/c/Users/travis/.cargo/bin:$PATH && rustc --version && echo find files &&  find /c -name  "rustc.exe" -print
-  - export PATH=/c/Users/travis/.cargo/bin:/c/Program\ Files/nodejs:$PATH && cd $TRAVIS_BUILD_DIR && git clone https://github.com/deltachat/deltachat-node --recursive && cd deltachat-node &&  mkdir -pv deltachat-core-rust && cd deltachat-core-rust && wget --quiet https://github.com/homdx/test-win-build/releases/download/cached-0.104a.0/deltachat-core-rust.7z && 7z x -y deltachat-core-rust.7z && rm deltachat-core-rust.7z &&  npm install && npm link
+  - export PATH=/c/Users/travis/.cargo/bin:/c/Program\ Files/nodejs:$PATH && cd $TRAVIS_BUILD_DIR && git clone https://github.com/deltachat/deltachat-node --recursive && cd deltachat-node &&  mkdir -pv deltachat-core-rust && cd deltachat-core-rust && echo wget --quiet https://github.com/homdx/test-win-build/releases/download/cached-0.104a.0/deltachat-core-rust.7z && echo 7z x -y deltachat-core-rust.7z && rm -fv deltachat-core-rust.7z &&  npm install && npm link
   - cd $TRAVIS_BUILD_DIR && git clone --recursive https://github.com/deltachat/deltachat-desktop && cd deltachat-desktop && export PATH=/c/Users/travis/.cargo/bin:/c/Program\ Files/nodejs:$PATH && npm link deltachat-node && npm install && echo build deltachat dekstop windows && npm run build && echo test deltachat windows && npm run test
   - cd $TRAVIS_BUILD_DIR/deltachat-desktop && npm run dist || true
   - cd $TRAVIS_BUILD_DIR/deltachat-desktop && cd dist && mv win-unpacked ../release/ && cd .. && 7z a -tzip -r deltachat-win.zip release && mv deltachat-win.zip $TRAVIS_BUILD_DIR/
-  - cd /c/Users/travis/.cargo && 7z a -t7z -m0=lzma -mx=9 -mfb=64 -md=32m -ms=on -r $TRAVIS_BUILD_DIR/cargo.7z * || true
-  - cd $TRAVIS_BUILD_DIR/deltachat-node/deltachat-core-rust/  && 7z a -t7z -m0=lzma -mx=9 -mfb=64 -md=32m -ms=on -r $TRAVIS_BUILD_DIR/deltachat-core-rust.7z * || true
-  - cd /c/Users/travis/.rustup/ && 7z a -t7z -m0=lzma -mx=9 -mfb=64 -md=32m -ms=on -r $TRAVIS_BUILD_DIR/rustup-arc.7z * || true
+  - cd /c/Users/travis/.cargo && 7z a -bsp1 -t7z -m0=lzma -mx=9 -mfb=64 -md=32m -ms=on -r $TRAVIS_BUILD_DIR/cargo.7z * || true
+  - cd $TRAVIS_BUILD_DIR/deltachat-node/deltachat-core-rust/  && 7z a -bsp1 -t7z -m0=lzma -mx=9 -mfb=64 -md=32m -ms=on -r $TRAVIS_BUILD_DIR/deltachat-core-rust.7z * || true
+  - cd /c/Users/travis/.rustup/ && 7z a -bsp1 -t7z -m0=lzma -mx=9 -mfb=64 -md=32m -ms=on -r $TRAVIS_BUILD_DIR/rustup-arc.7z * || true
   - cd $TRAVIS_BUILD_DIR && ls -la &&  find /c -name  "rustc.exe" -print
 
 deploy:
