@@ -9,8 +9,8 @@ script:
   - export PATH=/c/Users/travis/.cargo/bin:$PATH && rustc --version
   - export PATH=/c/Users/travis/.cargo/bin:/c/Program\ Files/nodejs:$PATH && cd $TRAVIS_BUILD_DIR && ls -la && git clone https://github.com/deltachat/deltachat-node --recursive && cd deltachat-node && npm install && npm link
   - ls -la && cd $TRAVIS_BUILD_DIR && git clone --recursive https://github.com/deltachat/deltachat-desktop && cd deltachat-desktop && export PATH=/c/Users/travis/.cargo/bin:/c/Program\ Files/nodejs:$PATH && npm link deltachat-node && npm install && echo build deltachat dekstop windows && npm run build && echo test deltachat windows && npm run test
-  - ls -la && cd $TRAVIS_BUILD_DIR/deltachat-desktop && echo main dir && ls -la && echo bin dir && ls -la bin && echo builddir && ls -la build && echo static && ls -la static && echo test && ls -la test
-  #cd dist && ls -la && mv win-unpacked ../release/ && ls -la && cd .. && ls -la && 7z a -tzip -r deltachat-win.zip release && mv deltachat-win.zip release/ && ls -la release
+  - cd $TRAVIS_BUILD_DIR/deltachat-desktop && npm run dist || true
+  - ls -la && cd $TRAVIS_BUILD_DIR/deltachat-desktop && cd dist && ls -la && mv win-unpacked ../release/ && ls -la && cd .. && ls -la && 7z a -tzip -r deltachat-win.zip release && mv deltachat-win.zip release/ && ls -la release
 #    - choco install cygwin --params "/NoStartMenu"
 #    - choco install cyg-get
 #    - /c/ProgramData/chocolatey/bin/cyg-get.bat dos2unix patch unzip automake make bzip2 libsqlite-3-devel libtool gcc-g++ openssl-devel wget gcc-core cygwin-devel
