@@ -4,7 +4,7 @@ language: shell
 script:
   - ls /c/Users
     #- wget https://static.rust-lang.org/rustup/dist/i686-pc-windows-gnu/rustup-init.exe && ./rustup-init.exe -s --default-toolchain nightly
-  - choco install nodejs.install 7zip.install && ls -la && cd $TRAVIS_BUILD_DIR && ls -la && 7za a -tzip test1.zip .travis.yml && ss  -la
+  - choco install nodejs.install 7zip.install && ls -la && cd $TRAVIS_BUILD_DIR && ls -la && 7za a -tzip test1.zip .travis.yml && ls -la
   - export PATH=/c/Users/travis/.cargo/bin:$PATH && cd /c/ProgramData/chocolatey/bin && wget https://static.rust-lang.org/rustup/dist/i686-pc-windows-gnu/rustup-init.exe && ./rustup-init.exe -y --default-toolchain nightly
   - export PATH=/c/Users/travis/.cargo/bin:$PATH && rustc --version
   - export PATH=/c/Users/travis/.cargo/bin:/c/Program\ Files/nodejs:$PATH && cd $TRAVIS_BUILD_DIR && ls -la && git clone https://github.com/deltachat/deltachat-node --recursive && cd deltachat-node && npm install && npm link
