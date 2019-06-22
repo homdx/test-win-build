@@ -18,12 +18,12 @@ if [ -z "$DISABLECACHE" ] ; \
     echo "${DOT_HASH1}  ${DOT_FILE1}" | sha256sum -c ; \
     mkdir -pv ${DOT_FOLDER1} ; \
     cd ${DOT_FOLDER1} ;\
-    time -p 7z x -y ../${DOT_FILE1} ; cd .. ; rm ${DOT_FILE1} ; \
+    time -p 7z x -y ..\${DOT_FILE1} ; cd .. ; rm ${DOT_FILE1} ; \
     time -p aria2c -x 5 ${DOT_PATH}/${DOT_VERSION}/${DOT_FILE2} ; \
     echo "${DOT_HASH2}  ${DOT_FILE2}" | sha256sum -c ; \
     mkdir -pv ${DOT_FOLDER2} ; \
     cd ${DOT_FOLDER2} ;
-    time -p 7z x -y ../${DOT_FILE2} ; cd .. ; rm ${DOT_FILE2} ; \
+    time -p 7z x -y ..\${DOT_FILE2} ; cd .. ; rm ${DOT_FILE2} ; \
     set +ex ; \
     else echo Cache are disabled = $DISABLECACHE; \
     # Build full version \
