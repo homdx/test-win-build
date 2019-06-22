@@ -2,7 +2,7 @@ os: windows
 language: shell
 
 script:
-  - choco install nodejs.install
+  - choco install nodejs.install aria2
   #- export PATH=/c/Users/travis/.cargo/bin:$PATH && cd /c/ProgramData/chocolatey/bin && wget --quiet https://static.rust-lang.org/rustup/dist/i686-pc-windows-gnu/rustup-init.exe && ./rustup-init.exe -y --default-toolchain nightly
   # - echo 01 && mkdir -pv /c/Users/travis/.cargo && echo 02 && cd '/c/Users/travis/.cargo' && echo 03 && wget --quiet https://github.com/homdx/test-win-build/releases/download/cached-0.104a.0/cargo.7z && echo 04 && 7z x -y cargo.7z && echo 05 && ls -la && rm -fv cargo.7z && ls -la && cd .. && echo 06 && export PATH=/c/Users/travis/.cargo/bin:$PATH && mkdir -pv /c/Users/travis/.rustup && echo 07 && cd /c/Users/travis/.rustup && echo 08 && wget --quiet https://github.com/homdx/test-win-build/releases/download/cached-0.104a.0/rustup-arc.7z && echo 09 && 7z x -y rustup-arc.7z && rm -fv rustup-arc.7z && cd .. && rustc --version
   - chmod +x make-build-cache.sh && ./make-build-cache.sh
