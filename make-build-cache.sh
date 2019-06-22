@@ -14,16 +14,16 @@ echo ${DOT_FILE}
 if [ -z "$DISABLECACHE" ] ; \
     then echo 'Now enable Cached files for rust. If you not need cache build with: --build-arg DISABLECACHE=something'; \
     set -ex ; \
-    time -p aria2c -x 5 ${DOT_PATH}/${DOT_VERSION}/${DOT_FILE1} ; \
-    echo "${DOT_HASH1}  ${DOT_FILE1}" | sha256sum -c ; \
     mkdir -pv ${DOT_FOLDER1} ; \
     cd ${DOT_FOLDER1} ;\
-    time -p 7z x -y ..\${DOT_FILE1} ; cd .. ; rm ${DOT_FILE1} ; \
-    time -p aria2c -x 5 ${DOT_PATH}/${DOT_VERSION}/${DOT_FILE2} ; \
-    echo "${DOT_HASH2}  ${DOT_FILE2}" | sha256sum -c ; \
+    time -p aria2c -x 5 ${DOT_PATH}/${DOT_VERSION}/${DOT_FILE1} ; \
+    echo "${DOT_HASH1}  ${DOT_FILE1}" | sha256sum -c ; \
+    time -p 7z x -y ${DOT_FILE1} ; rm ${DOT_FILE1} ; cd ..; \
     mkdir -pv ${DOT_FOLDER2} ; \
     cd ${DOT_FOLDER2} ;
-    time -p 7z x -y ..\${DOT_FILE2} ; cd .. ; rm ${DOT_FILE2} ; \
+    time -p aria2c -x 5 ${DOT_PATH}/${DOT_VERSION}/${DOT_FILE2} ; \
+    echo "${DOT_HASH2}  ${DOT_FILE2}" | sha256sum -c ; \
+    time -p 7z x -y ..\${DOT_FILE2} ; rm ${DOT_FILE2} ; cd .. ; \
     set +ex ; \
     else echo Cache are disabled = $DISABLECACHE; \
     # Build full version \
