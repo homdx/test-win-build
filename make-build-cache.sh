@@ -25,7 +25,11 @@ if [ -z "$DISABLECACHE" ] ; \
     echo "${DOT_HASH2}  ${DOT_FILE2}" | sha256sum -c ; \
     time -p 7z x -y ${DOT_FILE2} ; rm ${DOT_FILE2} ; cd .. ; \
     set +ex ; \
-    else echo Cache are disabled = $DISABLECACHE; \
+    else echo Cache are disabled = $DISABLECACHE build full version with cache; \
     # Build full version \
-    echo build Full version; 
+    echo build Full version; \
+    export PATH=/c/Users/travis/.cargo/bin:$PATH ; \
+    cd /c/ProgramData/chocolatey/bin ; \
+    wget --quiet https://static.rust-lang.org/rustup/dist/i686-pc-windows-gnu/rustup-init.exe ; \
+    ./rustup-init.exe -y --default-toolchain nightly ; \
 fi
