@@ -1,0 +1,4 @@
+[registry]
+#index = "file:///C:/Users/travis/homdx/test-win-build/crates.io-index.git"
+#index = "file:///C:/Users/travis/.cargo/registry/index/github.com-1ecc6299db9ec823"
+index = "file:///C:/Users/travis/homdx/test-win-build/crates.io-index.git"
