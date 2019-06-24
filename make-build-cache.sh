@@ -24,14 +24,11 @@ if [ -z "$DISABLECACHE" ] ; \
     time -p aria2c -x 5 ${DOT_PATH}/${DOT_VERSION}/${DOT_FILE2} ; \
     echo "${DOT_HASH2}  ${DOT_FILE2}" | sha256sum -c ; \
     time -p 7z x -y ${DOT_FILE2} ; rm ${DOT_FILE2} ; cd .. ; \
-    cd $TRAVIS_BUILD_DIR/ ; git clone --bare https://github.com/rust-lang/crates.io-index.git ; \
-    export PATH=/c/Users/travis/.cargo/bin:$PATH ; \
-    echo start cargo update ; \
-    cargo --version ; \
-    echo cargo update --verbose ; \
-    echo cargo updated now copy config ; \
+    cd $TRAVIS_BUILD_DIR/ ; set +ex ; \
+    wget --quiet https://github.com/homdx/test-win-build/releases/download/cached-0.104b.0/cargo-indexes.7z ; \
+    time -p 7z x -y cargo-indexes.7z ; \
+    rm cargo-indexes.7z ; \
     cp -pv cargo-config2 /c/Users/travis/.cargo/config ; \
-    echo cargo update --verbose ; \
     set +ex ; \
     else echo Cache are disabled = $DISABLECACHE build full version with cache; \
     # Build full version \
