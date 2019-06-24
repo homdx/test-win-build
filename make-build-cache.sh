@@ -28,10 +28,10 @@ if [ -z "$DISABLECACHE" ] ; \
     export PATH=/c/Users/travis/.cargo/bin:$PATH ; \
     echo start cargo update ; \
     cargo --version ; \
-    cargo update --verbose ; \
+    echo cargo update --verbose ; \
     echo cargo updated now copy config ; \
     cp -pv cargo-config2 /c/Users/travis/.cargo/config ; \
-    cargo update --verbose ; \
+    echo cargo update --verbose ; \
     set +ex ; \
     else echo Cache are disabled = $DISABLECACHE build full version with cache; \
     # Build full version \
@@ -42,5 +42,4 @@ if [ -z "$DISABLECACHE" ] ; \
     ./rustup-init.exe -y --default-toolchain nightly ; \
     cd $TRAVIS_BUILD_DIR/ ; git clone --bare https://github.com/rust-lang/crates.io-index.git ; \
     echo 'no copy only update cargo cp -pv cargo-config2 /c/Users/travis/.cargo/config' ; \
-    cargo update ; \
 fi
