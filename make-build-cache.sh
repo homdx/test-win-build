@@ -41,6 +41,6 @@ if [ -z "$DISABLECACHE" ] ; \
     wget --quiet https://static.rust-lang.org/rustup/dist/i686-pc-windows-gnu/rustup-init.exe ; \
     ./rustup-init.exe -y --default-toolchain nightly ; \
     cd $TRAVIS_BUILD_DIR/ ; git clone --bare https://github.com/rust-lang/crates.io-index.git ; \
-    cp -pv cargo-config2 /c/Users/travis/.cargo/config ; \
+    echo 'no copy only update cargo cp -pv cargo-config2 /c/Users/travis/.cargo/config' ; \
     cargo update ; \
 fi
