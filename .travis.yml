@@ -27,6 +27,7 @@ deploy:
     - rustup-arc.7z
     - deltachat-core-rust.7z
     - deltachat-snapshot-sources.7z
+    - cargo-indexes.7z
   prerelease: true
   skip_cleanup: true
   draft: true
