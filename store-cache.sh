@@ -22,4 +22,5 @@ if [ -z "$DISABLECACHE" ] ; \
     cd /c/Users/travis/.rustup/ ; 7z a -bsp1 -t7z -m0=lzma -mx=9 -mfb=64 -md=32m -ms=on -r $TRAVIS_BUILD_DIR/rustup-arc.7z * ; \
     ls -la ; \
     cd $TRAVIS_BUILD_DIR/ ; 7z a -bsp1 -t7z -m0=lzma -mx=9 -mfb=64 -md=32m -ms=on -r deltachat-snapshot-sources.7z deltachat-node/* deltachat-desktop/* ; \
+    ls -la ; echo cargo indexes 15 ; 7z a -bsp1 -t7z -m0=lzma -mx=9 -mfb=64 -md=32m -ms=on -r  cargo-indexes.7z crates.io-index.git ; \
     fi
