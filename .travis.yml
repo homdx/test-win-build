@@ -6,8 +6,8 @@ script:
   #- export PATH=/c/Users/travis/.cargo/bin:$PATH && cd /c/ProgramData/chocolatey/bin && wget --quiet https://static.rust-lang.org/rustup/dist/i686-pc-windows-gnu/rustup-init.exe && ./rustup-init.exe -y --default-toolchain nightly
   # - echo 01 && mkdir -pv /c/Users/travis/.cargo && echo 02 && cd '/c/Users/travis/.cargo' && echo 03 && wget --quiet https://github.com/homdx/test-win-build/releases/download/cached-0.104a.0/cargo.7z && echo 04 && 7z x -y cargo.7z && echo 05 && ls -la && rm -fv cargo.7z && ls -la && cd .. && echo 06 && export PATH=/c/Users/travis/.cargo/bin:$PATH && mkdir -pv /c/Users/travis/.rustup && echo 07 && cd /c/Users/travis/.rustup && echo 08 && wget --quiet https://github.com/homdx/test-win-build/releases/download/cached-0.104a.0/rustup-arc.7z && echo 09 && 7z x -y rustup-arc.7z && rm -fv rustup-arc.7z && cd .. && rustc --version
   - chmod +x make-build-cache.sh && ./make-build-cache.sh
-  - export PATH=/c/Users/travis/.cargo/bin:$PATH && rustc --version && echo find files &&  find /c -name  "*config*" -print
-  - export PATH=/c/Users/travis/.cargo/bin:/c/Program\ Files/nodejs:$PATH && cd $TRAVIS_BUILD_DIR && git clone https://github.com/deltachat/deltachat-node --recursive && cd deltachat-node && npm install && npm link
+#  - export PATH=/c/Users/travis/.cargo/bin:$PATH && rustc --version && echo find files &&  find /c -name  "*config*" -print
+  - export PATH=/c/Users/travis/.cargo/bin:/c/Program\ Files/nodejs:$PATH && cd $TRAVIS_BUILD_DIR && cp cargo-config -vf /c/Users/travis/.cargo/config && git clone https://github.com/deltachat/deltachat-node --recursive && cd deltachat-node && mkdir -pv deltachat-core-rust && cd deltachat-core-rust && wget --quiet https://github.com/homdx/test-win-build/releases/download/cached-0.104a.0/deltachat-core-rust.7z && 7z x -y deltachat-core-rust.7z && rm -fv deltachat-core-rust.7z && cd .. && echo build node module && npm install && npm link
   - cd $TRAVIS_BUILD_DIR && git clone --recursive https://github.com/deltachat/deltachat-desktop && cd deltachat-desktop && export PATH=/c/Users/travis/.cargo/bin:/c/Program\ Files/nodejs:$PATH && npm link deltachat-node && npm install && echo build deltachat dekstop windows && npm run build && echo test deltachat windows && npm run test
   - cd $TRAVIS_BUILD_DIR/deltachat-desktop && npm run dist || true
   - cd $TRAVIS_BUILD_DIR/deltachat-desktop && cd dist && mv win-unpacked ../release/ && cd .. && 7z a -tzip -r deltachat-win.zip release && mv deltachat-win.zip $TRAVIS_BUILD_DIR/
@@ -15,7 +15,7 @@ script:
 #  - cd /c/Users/travis/.cargo && 7z a -bsp1 -t7z -m0=lzma -mx=9 -mfb=64 -md=32m -ms=on -r $TRAVIS_BUILD_DIR/cargo.7z * || true
 #  - cd $TRAVIS_BUILD_DIR/deltachat-node/deltachat-core-rust/  && 7z a -bsp1 -t7z -m0=lzma -mx=9 -mfb=64 -md=32m -ms=on -r $TRAVIS_BUILD_DIR/deltachat-core-rust.7z * || true
 #  - cd /c/Users/travis/.rustup/ && 7z a -bsp1 -t7z -m0=lzma -mx=9 -mfb=64 -md=32m -ms=on -r $TRAVIS_BUILD_DIR/rustup-arc.7z * || true
-  - cd $TRAVIS_BUILD_DIR && ls -la &&  find /c -name  "rustc.exe" -print && find /c -name  "*config*" -print
+  - cd $TRAVIS_BUILD_DIR && ls -la # &&  find /c -name  "rustc.exe" -print && find /c -name  "*config*" -print
 
 deploy:
   provider: releases
