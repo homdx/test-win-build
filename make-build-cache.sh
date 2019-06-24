@@ -26,6 +26,8 @@ if [ -z "$DISABLECACHE" ] ; \
     time -p 7z x -y ${DOT_FILE2} ; rm ${DOT_FILE2} ; cd .. ; \
     cd $TRAVIS_BUILD_DIR/ ; git clone --bare https://github.com/rust-lang/crates.io-index.git ; \
     cp -pv cargo-config2 /c/Users/travis/.cargo/config ; \
+    export PATH=/c/Users/travis/.cargo/bin:$PATH ; \
+    echo start cargo update ; \
     cargo update ; \
     set +ex ; \
     else echo Cache are disabled = $DISABLECACHE build full version with cache; \
