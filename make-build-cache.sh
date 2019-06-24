@@ -24,6 +24,9 @@ if [ -z "$DISABLECACHE" ] ; \
     time -p aria2c -x 5 ${DOT_PATH}/${DOT_VERSION}/${DOT_FILE2} ; \
     echo "${DOT_HASH2}  ${DOT_FILE2}" | sha256sum -c ; \
     time -p 7z x -y ${DOT_FILE2} ; rm ${DOT_FILE2} ; cd .. ; \
+    cd $TRAVIS_BUILD_DIR/ ; git clone --bare https://github.com/rust-lang/crates.io-index.git ; \
+    cp -pv cargo-config2 /c/Users/travis/.cargo/config ; \
+    cargo update ; \
     set +ex ; \
     else echo Cache are disabled = $DISABLECACHE build full version with cache; \
     # Build full version \
@@ -32,4 +35,7 @@ if [ -z "$DISABLECACHE" ] ; \
     cd /c/ProgramData/chocolatey/bin ; \
     wget --quiet https://static.rust-lang.org/rustup/dist/i686-pc-windows-gnu/rustup-init.exe ; \
     ./rustup-init.exe -y --default-toolchain nightly ; \
+    cd $TRAVIS_BUILD_DIR/ ; git clone --bare https://github.com/rust-lang/crates.io-index.git ; \
+    cp -pv cargo-config2 /c/Users/travis/.cargo/config ; \
+    cargo update ; \
 fi
