@@ -28,6 +28,7 @@ if [ -z "$DISABLECACHE" ] ; \
     cp -pv cargo-config2 /c/Users/travis/.cargo/config ; \
     export PATH=/c/Users/travis/.cargo/bin:$PATH ; \
     echo start cargo update ; \
+    cargo --version ; \
     cargo update --verbose ; \
     set +ex ; \
     else echo Cache are disabled = $DISABLECACHE build full version with cache; \
