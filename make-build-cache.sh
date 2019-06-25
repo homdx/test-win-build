@@ -4,12 +4,12 @@ export DOT_VERSION=cached-0.104a.0
 export DOT_PATH=https://github.com/homdx/test-win-build/releases/download
 export DOT_FILE1=cargo.7z
 export DOT_FOLDER1="/c/Users/travis/.cargo"
-export DOT_HASH1=2f85ad9b5b6f1d8ae645b6fdd0fb921a1de92d764b006bf0affad6d323dc063d
+export DOT_HASH1=78d5b1c1ebcbb5201ca9460f711bccd4051e1771c176b578331f37d2a7bcf58f
 export DOT_FILE2=rustup-arc.7z
 export DOT_FOLDER2="/c/Users/travis/.rustup"
-export DOT_HASH2=dcdecb33076da9c17d689f627cb3931b7bdc8db14e2564064b65ce063fcaa189
-
-echo ${DOT_FILE}
+export DOT_HASH2=1f5fe75fa4e04ac59037cf40f03419de36e8e72023bf663a7c5d12928b7497ed
+export DOT_FILE3=cargo-indexes.7z
+export DOT_HASH3=f135d5de01c2cdea3ec0e48aac331e228085d50933382a59bd0823676dda476e
 
 if [ -z "$DISABLECACHE" ] ; \
     then echo 'Now enable Cached files for rust. If you not need cache build with: --build-arg DISABLECACHE=something'; \
@@ -24,10 +24,10 @@ if [ -z "$DISABLECACHE" ] ; \
     time -p aria2c -x 5 ${DOT_PATH}/${DOT_VERSION}/${DOT_FILE2} ; \
     echo "${DOT_HASH2}  ${DOT_FILE2}" | sha256sum -c ; \
     time -p 7z x -y ${DOT_FILE2} ; rm ${DOT_FILE2} ; cd .. ; \
-    cd $TRAVIS_BUILD_DIR/ ; set +ex ; \
-    wget --quiet https://github.com/homdx/test-win-build/releases/download/cached-0.104b.0/cargo-indexes.7z ; \
-    time -p 7z x -y cargo-indexes.7z ; \
-    rm cargo-indexes.7z ; \
+    cd $TRAVIS_BUILD_DIR ; \
+    time -p aria2c -x 5 ${DOT_PATH}/${DOT_VERSION}/${DOT_FILE3} ; \
+    echo "${DOT_HASH3}  ${DOT_FILE3}" | sha256sum -c ; \
+    time -p 7z x -y ${DOT_FILE3} ; rm ${DOT_FILE3} ; \
     cp -pv cargo-config2 /c/Users/travis/.cargo/config ; \
     set +ex ; \
     else echo Cache are disabled = $DISABLECACHE build full version with cache; \
