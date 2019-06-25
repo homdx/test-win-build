@@ -24,9 +24,15 @@ https://github.com/homdx/test-win-build/releases
    export TRAVIS=true
    export TRAVIS_BUILD_DIR=~/test-win-build
    ```
-4. reproduce all step in file .travis.yml
+4. ./build-all.shl
 
 Builder for windows
+
+If you want compile all from sources, without usage precompiled files with cache (for rust and deltachat sources), run with:
+```
+./make-build-cache.sh --build-arg DISABLECACHE='something'
+./build.sh
+```
 
 Progress bar for Travis-CI
 * [x]  main application deltachat (unpacked)
