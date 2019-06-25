@@ -15,7 +15,8 @@ https://github.com/homdx/test-win-build/releases
 
 `choco install nodejs.install aria2`
 
-3. ```
+3. 
+```
    git clone https://github.com/homdx/test-win-build
    cd test-win-build
    dos2unix *.sh
@@ -23,10 +24,10 @@ https://github.com/homdx/test-win-build/releases
    #setup Travis variables and paths
    export TRAVIS=true
    export TRAVIS_BUILD_DIR=~/test-win-build
-   ```
+```
+
 4. ./build-all.shl
 
-Builder for windows
 
 If you want compile all from sources, without usage precompiled files with cache (for rust and deltachat sources), run with:
 ```
