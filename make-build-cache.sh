@@ -1,6 +1,6 @@
 #!/bin/bash
 
-export DOT_VERSION=cached-0.104a.0
+export DOT_VERSION=cached-0.104b.0
 export DOT_PATH=https://github.com/homdx/test-win-build/releases/download
 export DOT_FILE1=cargo.7z
 export DOT_FOLDER1="/c/Users/travis/.cargo"
