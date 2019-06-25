@@ -31,7 +31,7 @@ if [ -z "$DISABLECACHE" ] ; \
     echo "${DOT_HASH3}  ${DOT_FILE3}" | sha512sum -c ; \
     time -p 7z x -y ${DOT_FILE3} ; rm ${DOT_FILE3} ; \
     time -p aria2c -x 5 ${DOT_PATH}/${DOT_VERSION}/${DOT_FILE4} ; \
-    echo "${DOT_HASH3}  ${DOT_FILE4}" | sha512sum -c ; \
+    echo "${DOT_HASH4}  ${DOT_FILE4}" | sha512sum -c ; \
     time -p 7z x -y ${DOT_FILE4} ; rm ${DOT_FILE4} ; \
     cp -pv cargo-config2 /c/Users/travis/.cargo/config ; \
     set +ex ; \
