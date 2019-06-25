@@ -2,7 +2,13 @@
 
 *DeltaChat Windows release and CI builder for Windows*
 
-**Reproduce in your Windows env:**
+Download DeltaChat windows:
+
+https://github.com/homdx/test-win-build/releases
+
+
+
+**Reproduce in your Windows build env:**
 
 1. Setup https://chocolatey.org
 2. Setup Git to windows
