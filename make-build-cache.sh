@@ -1,17 +1,17 @@
 #!/bin/bash
 
-export DOT_VERSION=cached-0.105.0
+export DOT_VERSION=v0.105.0-pre2
 export DOT_PATH=https://github.com/homdx/test-win-build/releases/download
 export DOT_FILE1=cargo.7z
 export DOT_FOLDER1="/c/Users/travis/.cargo"
-export DOT_HASH1=73ec5d45ced651b7d48ba49d2ee7f01bca11a1ed619118189e7608e91ebb5911a3b74d604ff78ee0e6b2676b923aa82c39a3fc55224e84ef0d615d4e74634bfe
+export DOT_HASH1=c3a5f78ef5733ce5bc46b20d1dcf14ebeee7039e484fffbbc1558c53f8c158e60f337be0c84a911816a657e1c5374b83038dd7f3e3d14a03200a847360fe4e56
 export DOT_FILE2=rustup-arc.7z
 export DOT_FOLDER2="/c/Users/travis/.rustup"
-export DOT_HASH2=7002c15d5f7febf8fdecea5fd1e0a4e5665492efb8a516526c4ace68b72eb9ae5761eb9d0ae2ba110168bb9a0d8c063b867dc525582b7cf491bd75b9d37a9fa5
+export DOT_HASH2=ca0bfa11054f5f4d8a1cb4ea1dbd5b7f5fa195ab5004d437c5ff1969414dc92460140b72ab392fb9f6e59dfc663407cc1a94828e29f6ea3eecf35446426f08c0
 export DOT_FILE3=cargo-indexes.7z
-export DOT_HASH3=93e0e55175c3e0c96cdf6a88bc4556626822395a18214efbb6ef73ef18dfca903f8612fd9d56e6707bbd8b793d217b5755abf8339476e3ede7e05e61e605a547
+export DOT_HASH3=91a5718b51fd5380fde1e024212c1fa4df4c0c992c8a13e78c1b7baa407e27b78d92cfb4a94cb152a4b119eacd1ee499b9043ef979091ff1f06c0cc1dff78a3b
 export DOT_FILE4=deltachat-snapshot-sources.7z
-export DOT_HASH4=7ea5b939ab3ab9b546e8e3c6cb4c3fe2ab3680ba691e51df1452aa69c1b178a5e82f86e060e1bb787e0babfe002cc60108c8befd274bc49528bdafc002225c67
+export DOT_HASH4=9118ed8b392d29aeb694db4cb7355b3d48f11aa88331ac461d521bbc023c72a52a8ef1df06fc6987181b512f6233028e40a556920684505397329da61201c89c
 
 if [ -z "$DISABLECACHE" ] ; \
     then echo 'Now enable Cached files for rust. If you not need cache build with: --build-arg DISABLECACHE=something'; \
