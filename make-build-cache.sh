@@ -47,6 +47,9 @@ if [ -z "$DISABLECACHE" ] ; \
     export PATH=/c/Users/travis/.cargo/bin:/c/Program\ Files/nodejs:$PATH ; \
     echo git latest sources ; \
     cd $TRAVIS_BUILD_DIR ; git clone https://github.com/deltachat/deltachat-node --recursive ; \
+    cd deltachat-node ; \
+    git checkout 7a8e05d8f9af4cd62a7441b3acf311dad61f66c8 ; \
+    cd .. ; \
     cd deltachat-desktop ; \
     git checkout ca0460c5bf90a5ebb5bfe2aa794799030d8e23ca ; \
     cd .. ; \
