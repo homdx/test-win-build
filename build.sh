@@ -7,7 +7,13 @@ cd $TRAVIS_BUILD_DIR && ls -la && export PATH=/c/Users/travis/.cargo/bin:/c/Prog
 
 function make_desktop {
 echo make desktop
-cd $TRAVIS_BUILD_DIR && export PATH=/c/Users/travis/.cargo/bin:/c/Program\ Files/nodejs:$PATH && cd deltachat-desktop && export PATH=/c/Users/travis/.cargo/bin:/c/Program\ Files/nodejs:$PATH && npm link deltachat-node && npm install && echo build deltachat dekstop windows && npm run build && echo test deltachat windows && npm run test
+cd $TRAVIS_BUILD_DIR && export PATH=/c/Users/travis/.cargo/bin:/c/Program\ Files/nodejs:$PATH && cd deltachat-desktop && export PATH=/c/Users/travis/.cargo/bin:/c/Program\ Files/nodejs:$PATH && npm link deltachat-node && npm install && echo build deltachat dekstop windows && npm run build && \
+if [ -z "$DISABLECACHE" ] ; \
+    then echo 'Now enable Cached files for rust. If you not need cache build with: --build-arg DISABLECACHE=something'; \
+    else echo Cache are disabled = $DISABLECACHE build full version with cache; \
+    echo test deltachat windows ; \
+    npm run test ; \
+fi
 }
 
 function ok_exit {
