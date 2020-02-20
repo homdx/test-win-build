@@ -40,5 +40,5 @@ if [ -z "$DISABLECACHE" ] ; \
     echo build Full version; \
     date ; \
     git clone --recursive --single-branch --branch 5.15 git://github.com/qt/qt5.git ;\
-    7z a -bsp1 -t7z -m0=lzma -mx=9 -mfb=64 -md=32m -ms=on -r ../qt-sources.7z qt5 ;\
+    7z a -bsp1 -t7z -m0=lzma -mx=9 -mfb=64 -md=32m -ms=on -s 1999m -r ../qt-sources.7z qt5 -xr!.git ;\
 fi
