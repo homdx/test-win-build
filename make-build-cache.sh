@@ -19,7 +19,7 @@ mkdir -pv ${DOT_FOLDER1} ; \
 cd ${DOT_FOLDER1} ;\
 time -p aria2c -x 5 ${DOT_PATH}/${DOT_VERSION}/${DOT_FILE1} ; \
 echo "${DOT_HASH1}  ${DOT_FILE1}" | sha512sum -c ; \
-time -p 7z x -y ${DOT_FILE1} ; rm ${DOT_FILE1} ; cd ..; \
+time -p 7z x -y ${DOT_FILE1} ; echo no rm ${DOT_FILE1} ; cd ..; \
 set +ex
 
 echo Setup Active Perl
