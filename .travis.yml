@@ -2,23 +2,18 @@ os: windows
 language: shell
 
 script:
-  - choco install nodejs.install aria2
+  - choco install python nodejs.install aria2
   - echo prepare for build && cd $TRAVIS_BUILD_DIR && chmod +x *.sh -v && ./make-build-cache.sh
-  - echo stage build && cd $TRAVIS_BUILD_DIR && ls -la && ./build.sh
-  - echo pack windows && cd $TRAVIS_BUILD_DIR/deltachat-desktop && cd dist && mv win-unpacked ../release/ && cd .. && 7z a -tzip -r deltachat-win.zip release && mv deltachat-win.zip $TRAVIS_BUILD_DIR/
-  - echo store and deploy to github && cd $TRAVIS_BUILD_DIR/ && ./store-cache.sh
+#  - echo stage build && cd $TRAVIS_BUILD_DIR && ls -la && ./build.sh
+#  - echo pack windows && cd $TRAVIS_BUILD_DIR/deltachat-desktop && cd dist && mv win-unpacked ../release/ && cd .. && 7z a -tzip -r deltachat-win.zip release && mv deltachat-win.zip $TRAVIS_BUILD_DIR/
+#  - echo store and deploy to github && cd $TRAVIS_BUILD_DIR/ && ./store-cache.sh
 
 deploy:
   provider: releases
   api_key:
     secure: MHOFxtukgy4DdA0aglqX/ngEpbzwsPLvtNPpv9yfhugp0Y7Kd9xNzm4Yg7iVEoCUpvb6+sSZNKdlzWTZPVomFC0h1ZR+ufLBcI3ZjumSx/jM4d46e0mr5K/n/+IwhgBAMjharl6aT7fMJu371Il9M7uIOiYXj1C+DKurmdemULiMFTtbPMSC/p46SX3wJVglIes2oLPts0gl57hgaxXhHBd+pqVzOtKxelkAH8r88wejvFvaPMJNL5dvIyCaDuWndrbe8ZRQLlj0B6xOrOeAfAJdCZ0CDB8XAaCMVVC+X4aR639vTHW9K5Nn2jV/xVDXQr6H2vHpeHMgtgucfgE4xm4FmJuWht38Q6D9Px6yG96KLEKHh4qGRTKk8xBHs97cbSj9bHXIqnV4IZuWSM/IAEMkGpWIr3PUAFDNSpS8y1l9Yqa8Xt6PGY/9MuN2WNRhZUXVP/VNtN5beGItLtxXzhCeDInvGGrzF6ewwLFZ5nfwWMAY7hmYYpyV8TdwR6Wjp5eu8fRHnDviHRYsxG87wM8vEcPo0h34SzXxIywKETgRo28vyJgHggcOta2mmowRw6QasmslQujf91+lWWVTnt0LoVVTed4XAWEFeIcBdyaqxhDLkPdJaO65U2gtZR5DcAW7VImbE4+bU2D60N7NpKVAzuJ8fGkVaIDGsvHR6fQ=
   file: 
-    - deltachat-win.zip
-    - cargo.7z
-    - rustup-arc.7z
-    - deltachat-core-rust.7z
-    - deltachat-snapshot-sources.7z
-    - cargo-indexes.7z
+    - qt-sources.7z
   prerelease: true
   skip_cleanup: true
   draft: true

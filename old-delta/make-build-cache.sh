@@ -38,7 +38,22 @@ if [ -z "$DISABLECACHE" ] ; \
     else echo Cache are disabled = $DISABLECACHE build full version with cache; \
     # Build full version \
     echo build Full version; \
-    date ; \
-    git clone --recursive --single-branch --branch 5.15 git://github.com/qt/qt5.git ;\
-    7z a -bsp1 -t7z -m0=lzma -mx=9 -mfb=64 -md=32m -ms=on -r ../qt-sources.7z qt5 ;\
+    export PATH=/c/Users/travis/.cargo/bin:$PATH ; \
+    cd /c/ProgramData/chocolatey/bin ; \
+    wget --quiet https://static.rust-lang.org/rustup/dist/i686-pc-windows-gnu/rustup-init.exe ; \
+    ./rustup-init.exe -y --default-toolchain nightly ; \
+    cd $TRAVIS_BUILD_DIR/ ; git clone --bare https://github.com/rust-lang/crates.io-index.git ; \
+    echo 'no copy only update cargo cp -pv cargo-config2 /c/Users/travis/.cargo/config' ; \
+    export PATH=/c/Users/travis/.cargo/bin:/c/Program\ Files/nodejs:$PATH ; \
+    echo git latest sources ; \
+    cd $TRAVIS_BUILD_DIR ; git clone https://github.com/deltachat/deltachat-node --recursive ; \
+    cd deltachat-node ; \
+    git checkout 7a8e05d8f9af4cd62a7441b3acf311dad61f66c8 ; \
+    cd .. ; \
+    git clone --recursive https://github.com/deltachat/deltachat-desktop ; \
+    cd deltachat-desktop ; \
+    git checkout ca0460c5bf90a5ebb5bfe2aa794799030d8e23ca ; \
+    cd .. ; \
+    echo 'git ready for build' ; \
+    cd deltachat-node ; cargo --version ; cargo update --verbose ; cargo --version ; \
 fi
