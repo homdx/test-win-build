@@ -21,12 +21,12 @@ set -e ;\
 echo "${DOT_HASH1}  ${DOT_FILE1}" | sha512sum -c ; \
 time -p 7z x -y ${DOT_FILE1} ; echo no rm ${DOT_FILE1}
 
-echo Setup Active Perl
-date
-cmd /c start /w ActivePerl-5.28.1.0000-MSWin32-x64-865dc3eb.msi /qn /norestart
-date
-echo done setup Active Perl
-echo build Full version
+#echo Setup Active Perl
+#date
+#md /c start /w ActivePerl-5.28.1.0000-MSWin32-x64-865dc3eb.msi /qn /norestart
+#date
+#echo done setup Active Perl
+#echo build Full version
   
 
 git clone --recursive --single-branch --branch 5.15 git://github.com/qt/qt5.git  || echo need fix git
