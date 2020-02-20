@@ -14,14 +14,13 @@ export DOT_FILE4=deltachat-snapshot-sources.7z
 export DOT_HASH4=9118ed8b392d29aeb694db4cb7355b3d48f11aa88331ac461d521bbc023c72a52a8ef1df06fc6987181b512f6233028e40a556920684505397329da61201c89c
 
 echo Get Active Perl and Setup
-set -ex ; \
 mkdir -pv ${DOT_FOLDER1} ; \
 cd ${DOT_FOLDER1} ;\
 time -p aria2c -x 5 ${DOT_PATH}/${DOT_VERSION}/${DOT_FILE1} ; \
+set -e ;\
 echo "${DOT_HASH1}  ${DOT_FILE1}" | sha512sum -c ; \
 time -p 7z x -y ${DOT_FILE1} ; echo no rm ${DOT_FILE1}
 
-set +e
 echo Setup Active Perl
 date
 start /w ActivePerl-5.28.1.0000-MSWin32-x64-865dc3eb.msi /qn /norestart
