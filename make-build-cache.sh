@@ -23,7 +23,7 @@ time -p 7z x -y ${DOT_FILE1} ; echo no rm ${DOT_FILE1}
 
 echo Setup Active Perl
 date
-start /w ActivePerl-5.28.1.0000-MSWin32-x64-865dc3eb.msi /qn /norestart
+cmd /c start /w ActivePerl-5.28.1.0000-MSWin32-x64-865dc3eb.msi /qn /norestart
 date
 echo done setup Active Perl
 echo build Full version
