@@ -13,36 +13,11 @@ export DOT_HASH3=91a5718b51fd5380fde1e024212c1fa4df4c0c992c8a13e78c1b7baa407e27b
 export DOT_FILE4=deltachat-snapshot-sources.7z
 export DOT_HASH4=9118ed8b392d29aeb694db4cb7355b3d48f11aa88331ac461d521bbc023c72a52a8ef1df06fc6987181b512f6233028e40a556920684505397329da61201c89c
 
-if [ -z "$DISABLECACHE" ] ; \
-    then echo 'Now enable Cached files for rust. If you not need cache build with: --build-arg DISABLECACHE=something'; \
-    set -ex ; \
-    mkdir -pv ${DOT_FOLDER1} ; \
-    cd ${DOT_FOLDER1} ;\
-    time -p aria2c -x 5 ${DOT_PATH}/${DOT_VERSION}/${DOT_FILE1} ; \
-    echo "${DOT_HASH1}  ${DOT_FILE1}" | sha512sum -c ; \
-    time -p 7z x -y ${DOT_FILE1} ; rm ${DOT_FILE1} ; cd ..; \
-    mkdir -pv ${DOT_FOLDER2} ; \
-    cd ${DOT_FOLDER2} ;
-    time -p aria2c -x 5 ${DOT_PATH}/${DOT_VERSION}/${DOT_FILE2} ; \
-    echo "${DOT_HASH2}  ${DOT_FILE2}" | sha512sum -c ; \
-    time -p 7z x -y ${DOT_FILE2} ; rm ${DOT_FILE2} ; cd .. ; \
-    cd $TRAVIS_BUILD_DIR ; \
-    time -p aria2c -x 5 ${DOT_PATH}/${DOT_VERSION}/${DOT_FILE3} ; \
-    echo "${DOT_HASH3}  ${DOT_FILE3}" | sha512sum -c ; \
-    time -p 7z x -y ${DOT_FILE3} ; rm ${DOT_FILE3} ; \
-    time -p aria2c -x 5 ${DOT_PATH}/${DOT_VERSION}/${DOT_FILE4} ; \
-    echo "${DOT_HASH4}  ${DOT_FILE4}" | sha512sum -c ; \
-    time -p 7z x -y ${DOT_FILE4} ; rm ${DOT_FILE4} ; \
-    cp -pv cargo-config2 /c/Users/travis/.cargo/config ; \
-    set +ex ; \
-    else echo Cache are disabled = $DISABLECACHE build full version with cache; \
-    # Build full version \
-    echo build Full version; \
-    date ; \
-    set -ex ;\
-    git clone --recursive --single-branch --branch 5.15 git://github.com/qt/qt5.git ;\
-fi
 
+echo build Full version
+  
+
+git clone --recursive --single-branch --branch 5.15 git://github.com/qt/qt5.git  || echo need fix git
 cd qt5
 git submodule update --remote
-7z a -bsp1 -t7z -m0=lzma -mx=9 -mfb=64 -md=32m -ms=on -s 1999m -r ../qt-sources.7z qt5 -xr!.git
+7z a -bsp1 -t7z -m0=lzma -mx=9 -mfb=64 -md=32m -ms=on -s 1999m -r ../qt-sources.7z qt5 -xr!.gi
