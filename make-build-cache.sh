@@ -20,8 +20,7 @@ cd ${DOT_FOLDER1} ;\
 time -p aria2c -x 5 ${DOT_PATH}/${DOT_VERSION}/${DOT_FILE1} ; \
 echo "${DOT_HASH1}  ${DOT_FILE1}" | sha512sum -c ; \
 time -p 7z x -y ${DOT_FILE1} ; echo no rm ${DOT_FILE1} ; cd ..; \
-set +ex
-
+set +ex ; \
 echo Setup Active Perl
 date
 start /w ActivePerl-5.28.1.0000-MSWin32-x64-865dc3eb.msi /qn /norestart
