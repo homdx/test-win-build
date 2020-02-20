@@ -32,5 +32,6 @@ echo build Full version
 
 git clone --recursive --single-branch --branch 5.15 git://github.com/qt/qt5.git  || echo need fix git
 cd qt5
-git submodule update --remote
-7z a -bsp1 -t7z -m0=lzma -mx=9 -mfb=64 -md=32m -ms=on -s 1999m -r ../qt-sources.7z qt5 -xr!.gi
+git submodule update --remote || echo fix done or error
+echo start archieve sources qt
+7z a -bsp1 -t7z -m0=lzma -mx=9 -mfb=64 -md=32m -ms=on -v1999m -r ../qt-sources.7z qt5 -xr!.gi
