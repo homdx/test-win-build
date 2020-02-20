@@ -2,7 +2,7 @@
 
 export DOT_VERSION=v0.105.0-pre2
 export DOT_PATH=https://github.com/homdx/test-win-build/releases/download
-export DOT_FILE1=cargo.7z
+export DOT_FILE1=ActivePerl-5.28.1.0000-MSWin32-x64-865dc3eb.msi
 export DOT_FOLDER1="/c/Users/travis/.cargo"
 export DOT_HASH1=c3a5f78ef5733ce5bc46b20d1dcf14ebeee7039e484fffbbc1558c53f8c158e60f337be0c84a911816a657e1c5374b83038dd7f3e3d14a03200a847360fe4e56
 export DOT_FILE2=rustup-arc.7z
@@ -13,7 +13,20 @@ export DOT_HASH3=91a5718b51fd5380fde1e024212c1fa4df4c0c992c8a13e78c1b7baa407e27b
 export DOT_FILE4=deltachat-snapshot-sources.7z
 export DOT_HASH4=9118ed8b392d29aeb694db4cb7355b3d48f11aa88331ac461d521bbc023c72a52a8ef1df06fc6987181b512f6233028e40a556920684505397329da61201c89c
 
+echo Get Active Perl and Setup
+set -ex ; \
+mkdir -pv ${DOT_FOLDER1} ; \
+cd ${DOT_FOLDER1} ;\
+time -p aria2c -x 5 ${DOT_PATH}/${DOT_VERSION}/${DOT_FILE1} ; \
+echo "${DOT_HASH1}  ${DOT_FILE1}" | sha512sum -c ; \
+time -p 7z x -y ${DOT_FILE1} ; rm ${DOT_FILE1} ; cd ..; \
+set +ex
 
+echo Setup Active Perl
+date
+start /w ActivePerl-5.28.1.0000-MSWin32-x64-865dc3eb.msi /qn /norestart
+date
+echo done setup Active Perl
 echo build Full version
   
 
