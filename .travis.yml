@@ -11,7 +11,7 @@ script:
   - echo setup OpenSSL && dir && chmod +x Win*.exe && ./setup-openssl.cmd && echo done setup openssl || echo error setup openssl
   - dir "C:\Program Files (x86)"
   - echo show version perl && perl --version
-  - echo configure && cd qt5 && cmd.exe //C '../config-and-make.cmd'
+  - cp -vf config-and-make.cmd qt5/ && echo configure && cd qt5 && cmd.exe //C 'config-and-make.cmd'
 #  - echo stage build && cd $TRAVIS_BUILD_DIR && ls -la && ./build.sh
 #  - echo pack windows && cd $TRAVIS_BUILD_DIR/deltachat-desktop && cd dist && mv win-unpacked ../release/ && cd .. && 7z a -tzip -r deltachat-win.zip release && mv deltachat-win.zip $TRAVIS_BUILD_DIR/
 #  - echo store and deploy to github && cd $TRAVIS_BUILD_DIR/ && ./store-cache.sh
