@@ -11,7 +11,7 @@ script:
   - echo setup OpenSSL && dir && chmod +x Win*.exe && ./setup-openssl.cmd && echo done setup openssl || echo error setup openssl
   - dir "C:\Program Files (x86)"
   - echo show version perl && perl --version
-  - mkdir jo && cd jo && wget http://download.qt.io/official_releases/jom/jom_1_1_2.zip && 7z x -y jom_1_1_2.zip && mv -vf *.* c:\\windows\\ && cd .. && rm -rvf jo && jom.exe /version
+  - mkdir jo && cd jo && wget http://download.qt.io/official_releases/jom/jom_1_1_2.zip && 7z x -y jom_1_1_2.zip && mv -vf *.* c:\\windows\\ && cd .. && rm -rvf jo
   - cp -vf *make*.cmd qt5/ && echo configure && cd qt5 && export PATH=$MSBUILD_PATH:$PATH && ./config-and-make.cmd && ./make-qt.cmd|| cat config.log
 #  - echo stage build && cd $TRAVIS_BUILD_DIR && ls -la && ./build.sh
 #  - echo pack windows && cd $TRAVIS_BUILD_DIR/deltachat-desktop && cd dist && mv win-unpacked ../release/ && cd .. && 7z a -tzip -r deltachat-win.zip release && mv deltachat-win.zip $TRAVIS_BUILD_DIR/
