@@ -5,5 +5,6 @@ echo start build
 jom.exe /s
 echo end build
 echo start install
-jom.exe install
+jom.exe install /s
 echo done install
+dir c:\qt515
