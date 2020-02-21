@@ -5,5 +5,5 @@ echo start build
 jom.exe /s
 echo end build
 echo start install
-jom.exe install /s
+jom.exe install
 echo done install
