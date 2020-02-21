@@ -34,6 +34,8 @@ cd qt5
 git submodule update --remote || echo fix done or error
 cd ..
 echo start archieve sources qt
-7z a -v2g -bsp1 -t7z -m0=lzma -mx=9 -mfb=64 -md=32m -ms=on -r qt-sources.7z qt5 -xr!.git -xr!.pack
-ls -la qt-sources.*
-mv -vf qt-sources.* $TRAVIS_BUILD_DIR/
+7z a -v2g -bsp1 -t7z -m0=lzma -mx=9 -mfb=64 -md=32m -ms=on -r $TRAVIS_BUILD_DIR/qt-sources.7z qt5 -xr!.git -xr!.pack
+echo list current folder
+ls -la
+echo list travis build dir
+ls -la $TRAVIS_BUILD_DIR/
