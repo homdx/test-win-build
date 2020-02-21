@@ -12,7 +12,7 @@ script:
   - dir "C:\Program Files (x86)"
   - echo show version perl && perl --version
   - mkdir jo && cd jo && wget http://download.qt.io/official_releases/jom/jom_1_1_2.zip && 7z x -y jom_1_1_2.zip && mv -vf *.* c:\\windows\\system32 && cd .. && rm -rvf jo && jom --version
-  - cp -vf config-and-make.cmd qt5/ && echo configure && cd qt5 && cmd.exe //C 'config-and-make.cmd' || cat config.log
+  - cp -vf config-and-make.cmd qt5/ && echo configure && cd qt5 && cmd.exe //C '../config-and-make.cmd' || cat config.log
 #  - echo stage build && cd $TRAVIS_BUILD_DIR && ls -la && ./build.sh
 #  - echo pack windows && cd $TRAVIS_BUILD_DIR/deltachat-desktop && cd dist && mv win-unpacked ../release/ && cd .. && 7z a -tzip -r deltachat-win.zip release && mv deltachat-win.zip $TRAVIS_BUILD_DIR/
 #  - echo store and deploy to github && cd $TRAVIS_BUILD_DIR/ && ./store-cache.sh
