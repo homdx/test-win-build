@@ -6,7 +6,7 @@ env:
   - MSBUILD_PATH="C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools\VC\Auxiliary\Build"
 
 script:
-  - cmd /c "C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools\VC\Auxiliary\Build\vcvarsall.bat" x86 && nmake
+  - cmd.exe //C 'config-and-make.cmd'
 #  echo export1 && export PATH=$MSBUILD_PATH:$PATH && MSBuild.exe -help
 #  - cmd.exe //C vcvarsall.bat x86 nmake
   - echo prepare for build && choco install aria2 && cd $TRAVIS_BUILD_DIR && chmod +x *.sh -v && ./make-build-cache.sh
