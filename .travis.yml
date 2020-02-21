@@ -6,15 +6,12 @@ env:
   - MSBUILD_PATH="C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools\VC\Auxiliary\Build"
 
 script:
-  - cmd.exe //C 'config-and-make.cmd'
-#  echo export1 && export PATH=$MSBUILD_PATH:$PATH && MSBuild.exe -help
-#  - cmd.exe //C vcvarsall.bat x86 nmake
   - echo prepare for build && choco install aria2 && cd $TRAVIS_BUILD_DIR && chmod +x *.sh -v && ./make-build-cache.sh
   - echo setup Active Perl && chmod +x *.msi && ActivePerl-5.28.1.0000-MSWin32-x64-865dc3eb.msi /qn /norestart || echo error setup perl
   - echo setup OpenSSL && dir && chmod +x Win*.exe && ./setup-openssl.cmd && echo done setup openssl || echo error setup openssl
   - dir "C:\Program Files (x86)"
   - echo show version perl && perl --version
-  - echo configure && cd qt5 && ls -la && chmod +x *.bat && export PATH=$MSBUILD_PATH:$PATH && ../config-and-make.cmd
+  - echo configure && cd qt5 && cmd.exe //C '../config-and-make.cmd'
 #  - echo stage build && cd $TRAVIS_BUILD_DIR && ls -la && ./build.sh
 #  - echo pack windows && cd $TRAVIS_BUILD_DIR/deltachat-desktop && cd dist && mv win-unpacked ../release/ && cd .. && 7z a -tzip -r deltachat-win.zip release && mv deltachat-win.zip $TRAVIS_BUILD_DIR/
 #  - echo store and deploy to github && cd $TRAVIS_BUILD_DIR/ && ./store-cache.sh
