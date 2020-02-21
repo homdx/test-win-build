@@ -13,9 +13,9 @@ deploy:
   api_key:
     secure: MHOFxtukgy4DdA0aglqX/ngEpbzwsPLvtNPpv9yfhugp0Y7Kd9xNzm4Yg7iVEoCUpvb6+sSZNKdlzWTZPVomFC0h1ZR+ufLBcI3ZjumSx/jM4d46e0mr5K/n/+IwhgBAMjharl6aT7fMJu371Il9M7uIOiYXj1C+DKurmdemULiMFTtbPMSC/p46SX3wJVglIes2oLPts0gl57hgaxXhHBd+pqVzOtKxelkAH8r88wejvFvaPMJNL5dvIyCaDuWndrbe8ZRQLlj0B6xOrOeAfAJdCZ0CDB8XAaCMVVC+X4aR639vTHW9K5Nn2jV/xVDXQr6H2vHpeHMgtgucfgE4xm4FmJuWht38Q6D9Px6yG96KLEKHh4qGRTKk8xBHs97cbSj9bHXIqnV4IZuWSM/IAEMkGpWIr3PUAFDNSpS8y1l9Yqa8Xt6PGY/9MuN2WNRhZUXVP/VNtN5beGItLtxXzhCeDInvGGrzF6ewwLFZ5nfwWMAY7hmYYpyV8TdwR6Wjp5eu8fRHnDviHRYsxG87wM8vEcPo0h34SzXxIywKETgRo28vyJgHggcOta2mmowRw6QasmslQujf91+lWWVTnt0LoVVTed4XAWEFeIcBdyaqxhDLkPdJaO65U2gtZR5DcAW7VImbE4+bU2D60N7NpKVAzuJ8fGkVaIDGsvHR6fQ=
   file: 
-    - qt-sources.7z.001
-    - qt-sources.7z.002
-    - qt-sources.7z.003
+    - qt-sources.7z
+#    - qt-sources.7z.002
+#    - qt-sources.7z.003
   prerelease: true
   skip_cleanup: true
   draft: true
