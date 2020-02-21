@@ -25,7 +25,7 @@ echo Download sources and extract Qt
 time -p aria2c -x 5 ${DOT_PATH}/${DOT_VERSION}/${DOT_FILE2} ; \
 set -e ;\
 echo "${DOT_HASH2}  ${DOT_FILE2}" | sha512sum -c ; \
-time -p 7z x -y ${DOT_FILE2} ; rm -vf ${DOT_FILE2}
+echo time -p 7z x -y ${DOT_FILE2} ; rm -vf ${DOT_FILE2}
 ls -la
 
 echo Download OpenSSL
@@ -34,6 +34,12 @@ set -e ;\
 echo "${DOT_HASH4}  ${DOT_FILE4}" | sha512sum -c ; \
 echo time -p 7z x -y ${DOT_FILE4} ; echo rm -vf ${DOT_FILE4}
 ls -la
+
+
+git clone --recursive --single-branch --branch 5.15 git://github.com/qt/qt5.git  || echo need fix git
+cd qt5
+git submodule update --remote || echo fix done or error
+cd ..
 
 exit
 #echo Setup Active Perl
