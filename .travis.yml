@@ -13,7 +13,7 @@ script:
   - echo show version perl && perl --version
   - mkdir jo && cd jo && wget http://download.qt.io/official_releases/jom/jom_1_1_2.zip && 7z x -y jom_1_1_2.zip && mv -vf *.* c:\\windows\\ && cd .. && rm -rvf jo
   - cp -vf *make*.cmd qt5/ && echo configure && cd qt5 && export PATH=$MSBUILD_PATH:$PATH && ./config-and-make.cmd && ./make-qt.cmd|| cat config.log
-  - echo comress && 7z a -bsp1 -t7z -m0=lzma -mx=3 -mfb=64 -md=32m -ms=on -r $TRAVIS_BUILD_DIR/qt515.7z /C/Qt515/
+  - echo comress && 7z a -bsp1 -t7z -m0=lzma -mx=3 -mfb=64 -md=32m -ms=on -r $TRAVIS_BUILD_DIR/qt515.7z C:\Qt515
 #  - echo stage build && cd $TRAVIS_BUILD_DIR && ls -la && ./build.sh
 #  - echo pack windows && cd $TRAVIS_BUILD_DIR/deltachat-desktop && cd dist && mv win-unpacked ../release/ && cd .. && 7z a -tzip -r deltachat-win.zip release && mv deltachat-win.zip $TRAVIS_BUILD_DIR/
 #  - echo store and deploy to github && cd $TRAVIS_BUILD_DIR/ && ./store-cache.sh
